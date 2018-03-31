@@ -2,7 +2,7 @@
 local function includePath()
     local paths = {
         "C:/work/project/XGame/XServer/lua/?.lua",
-        "C:/work/project/XGame/XAll/lua/?.lua",
+        "C:/work/project/XGame/XCommon/lua/?.lua",
     }
     for k,path in pairs(paths) do
         package.path = package.path .. ";" .. path
