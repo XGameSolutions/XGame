@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.2.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -225,24 +227,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Test.cs" />
-    <Compile Include="Assets\XLua\Examples\01_Helloworld\Helloworld.cs" />
-    <Compile Include="Assets\XLua\Examples\02_U3DScripting\LuaBehaviour.cs" />
-    <Compile Include="Assets\XLua\Examples\04_LuaObjectOrented\InvokeLua.cs" />
-    <Compile Include="Assets\XLua\Examples\05_NoGc\NoGc.cs" />
-    <Compile Include="Assets\XLua\Examples\06_Coroutine\Coroutine_Runner.cs" />
-    <Compile Include="Assets\XLua\Examples\06_Coroutine\CoroutineTest.cs" />
-    <Compile Include="Assets\XLua\Examples\07_AsyncTest\AsyncTest.cs" />
-    <Compile Include="Assets\XLua\Examples\07_AsyncTest\MessageBox.cs" />
-    <Compile Include="Assets\XLua\Examples\08_Hotfix\HotfixTest.cs" />
-    <Compile Include="Assets\XLua\Examples\08_Hotfix\HotfixTest2.cs" />
-    <Compile Include="Assets\XLua\Examples\08_Hotfix\StatefullTest.cs" />
-    <Compile Include="Assets\XLua\Examples\09_GenericMethod\Foo.cs" />
-    <Compile Include="Assets\XLua\Examples\09_GenericMethod\GenericMethodExample.cs" />
-    <Compile Include="Assets\XLua\Examples\10_SignatureLoader\SignatureLoaderTest.cs" />
-    <Compile Include="Assets\XLua\Examples\11_RawObject\RawObjectTest.cs" />
-    <Compile Include="Assets\XLua\Examples\12_ReImplementInLua\ReImplementInLua.cs" />
-    <Compile Include="Assets\XLua\Examples\ExampleGenConfig.cs" />
+    <Compile Include="Assets\Scripts\Startup.cs" />
     <Compile Include="Assets\XLua\Src\CodeEmit.cs" />
     <Compile Include="Assets\XLua\Src\CopyByValue.cs" />
     <Compile Include="Assets\XLua\Src\DelegateBridge.cs" />
@@ -265,20 +250,9 @@
     <Compile Include="Assets\XLua\Src\TemplateEngine\TemplateEngine.cs" />
     <Compile Include="Assets\XLua\Src\TypeExtensions.cs" />
     <Compile Include="Assets\XLua\Src\Utils.cs" />
-    <Compile Include="Assets\XLua\Tutorial\CSharpCallLua\CSCallLua.cs" />
-    <Compile Include="Assets\XLua\Tutorial\LoadLuaScript\ByFile\ByFile.cs" />
-    <Compile Include="Assets\XLua\Tutorial\LoadLuaScript\ByString\ByString.cs" />
-    <Compile Include="Assets\XLua\Tutorial\LoadLuaScript\Loader\CustomLoader.cs" />
-    <Compile Include="Assets\XLua\Tutorial\LuaCallCSharp\LuaCallCs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\XLua\CHANGELOG.txt" />
-    <None Include="Assets\XLua\Examples\02_U3DScripting\LuaTestScript.lua.txt" />
-    <None Include="Assets\XLua\Examples\03_UIEvent\ButtonInteraction.lua.txt" />
-    <None Include="Assets\XLua\Examples\06_Coroutine\Resources\coruntine_test.lua.txt" />
-    <None Include="Assets\XLua\Examples\06_Coroutine\Resources\cs_coroutine.lua.txt" />
-    <None Include="Assets\XLua\Examples\07_AsyncTest\Resources\async_test.lua.txt" />
-    <None Include="Assets\XLua\Examples\07_AsyncTest\Resources\message_box.lua.txt" />
     <None Include="Assets\XLua\Resources\perf\memory.lua.txt" />
     <None Include="Assets\XLua\Resources\perf\profiler.lua.txt" />
     <None Include="Assets\XLua\Resources\tdr\tdr.lua.txt" />
@@ -296,7 +270,6 @@
     <None Include="Assets\XLua\Src\Editor\Template\LuaWrapPusher.tpl.txt" />
     <None Include="Assets\XLua\Src\Editor\Template\PackUnpack.tpl.txt" />
     <None Include="Assets\XLua\Src\Editor\Template\TemplateCommon.lua.txt" />
-    <None Include="Assets\XLua\Tutorial\LoadLuaScript\ByFile\Resources\byfile.lua.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

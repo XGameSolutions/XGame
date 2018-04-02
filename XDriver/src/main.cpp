@@ -21,8 +21,15 @@ int main(int argc,char* argv[])
 	else {
 		file = argv[1];
 	}
+	lua_State* L = luaL_newstate();
 	XDriver& driver = XDriver::getInstance();
-	driver.init(file);
-	driver.run();
+	driver.init();
+	driver.setLuaState(L);
+	int r = luaL_dofile(L, file);
+	if (r)
+	{
+		cout << "dofile ERROR:r=" << lua_tostring(L, -1) << endl;
+	}
+	driver.runLoop();
 	return 0;
 }

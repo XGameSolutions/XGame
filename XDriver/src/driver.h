@@ -26,14 +26,15 @@ public:
 	XDriver& operator=(const XDriver&) = delete;
 
 	uv_loop_t* getLoop() { return loop; }
-	void init(const string& file);
-	void run();
+	void setLuaState(lua_State* L) { this->L = L; }
+	void init();
+	void runLoop();
+	void runOnce();
 	void close();
 private:
 	XDriver() {}
 	lua_State *L;
 	uv_loop_t *loop;
-	string filename;
 };
 
 #endif // !XDRIVER_H.H

@@ -4,6 +4,8 @@
 /XClient/Library
 /XClient/Temp
 /XClient/UnityPackageManager
+/XClient/Assets/XLua/Examples
+/XClient/Assets/XLua/Resources
 
 /XDriver/.vs
 /XDriver/project/.vs

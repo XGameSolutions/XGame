@@ -62,7 +62,6 @@ namespace XLua
 
         public LuaEnv()
         {
-            Debug.LogError("version:"+ LuaAPI.xlua_get_lib_version());
             if (LuaAPI.xlua_get_lib_version() != LIB_VERSION_EXPECT)
             {
                 throw new InvalidProgramException("wrong lib version expect:"
@@ -85,6 +84,8 @@ namespace XLua
                 LuaAPI.luaopen_i64lib(rawL);
                 LuaAPI.luaopen_perflib(rawL);
 
+                LuaAPI.xdInit(rawL);
+                LuaAPI.xdRegistFunc(rawL);
                 translator = new ObjectTranslator(this, rawL);
                 translator.createFunctionMetatable(rawL);
                 translator.OpenLib(rawL);

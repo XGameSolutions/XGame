@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>GamePlugins:3</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.2.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -223,12 +225,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\XLua\CHANGELOG.txt" />
-    <None Include="Assets\XLua\Examples\02_U3DScripting\LuaTestScript.lua.txt" />
-    <None Include="Assets\XLua\Examples\03_UIEvent\ButtonInteraction.lua.txt" />
-    <None Include="Assets\XLua\Examples\06_Coroutine\Resources\coruntine_test.lua.txt" />
-    <None Include="Assets\XLua\Examples\06_Coroutine\Resources\cs_coroutine.lua.txt" />
-    <None Include="Assets\XLua\Examples\07_AsyncTest\Resources\async_test.lua.txt" />
-    <None Include="Assets\XLua\Examples\07_AsyncTest\Resources\message_box.lua.txt" />
     <None Include="Assets\XLua\Resources\perf\memory.lua.txt" />
     <None Include="Assets\XLua\Resources\perf\profiler.lua.txt" />
     <None Include="Assets\XLua\Resources\tdr\tdr.lua.txt" />
@@ -246,7 +242,6 @@
     <None Include="Assets\XLua\Src\Editor\Template\LuaWrapPusher.tpl.txt" />
     <None Include="Assets\XLua\Src\Editor\Template\PackUnpack.tpl.txt" />
     <None Include="Assets\XLua\Src\Editor\Template\TemplateCommon.lua.txt" />
-    <None Include="Assets\XLua\Tutorial\LoadLuaScript\ByFile\Resources\byfile.lua.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

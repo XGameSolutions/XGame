@@ -556,6 +556,8 @@ namespace XLua.LuaDLL
         [DllImport(LUADLL, CallingConvention = CallingConvention.Cdecl)]
         public static extern IntPtr xlua_gl(IntPtr L);
 
+
+
 #if GEN_CODE_MINIMIZE
         [DllImport(LUADLL, CallingConvention = CallingConvention.Cdecl)]
         public static extern void xlua_set_csharp_wrapper_caller(IntPtr wrapper);
@@ -571,5 +573,12 @@ namespace XLua.LuaDLL
             xlua_set_csharp_wrapper_caller(Marshal.GetFunctionPointerForDelegate(wrapper_caller));
         }
 #endif
+
+        [DllImport(LUADLL, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int xdInit(IntPtr L);
+        [DllImport(LUADLL, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int xdRegistFunc(IntPtr L);
+        [DllImport(LUADLL, CallingConvention = CallingConvention.Cdecl)]
+        public static extern int xdRunOnce();
     }
 }

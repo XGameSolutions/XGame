@@ -5,6 +5,8 @@
 #include "driver.h"
 #include "proto.h"
 
+#define LUA_API __declspec(dllexport)
+
 static int xd_createListener(lua_State* L) {
 	uint32_t id = (uint32_t)lua_tointeger(L, 1);
 	XDriver& driver = XDriver::getInstance();
@@ -113,7 +115,7 @@ static int xd_sendData(lua_State* L) {
 	//XProto* proto = stream->sender->protos[protoId];
 	//printf("send:%s,%d,%d,%d\n", proto->format, test1, test2, test3);
 	stream->sender->writeProto(L, 3, protoId);
-	
+
 	return 1;
 }
 
@@ -200,4 +202,27 @@ void loadLib(lua_State * L)
 {
 	luaL_requiref(L, "xdriver", luaopen_lib, 1);
 	lua_pop(L, 1);
+}
+
+extern "C"
+{
+	LUA_API void xdInit(lua_State * L)
+	{
+		XDriver& driver = XDriver::getInstance();
+		driver.setLuaState(L);
+		driver.init();
+	}
+
+	LUA_API void xdRegistFunc(lua_State * L)
+	{
+		int top = lua_gettop(L);
+		luaL_requiref(L, "xdriver", luaopen_lib, 1);
+		lua_settop(L, top);
+	}
+
+	LUA_API void xdRunOnce()
+	{
+		XDriver& driver = XDriver::getInstance();
+		driver.runOnce();
+	}
 }
