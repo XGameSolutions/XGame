@@ -16,6 +16,7 @@ struct CBFunc cbFunc[] = {
 	{ lcb_connectCb ,		"connectCb"},
 	{ lcb_connectErrorCb ,	"connectErrorCb" },
 	{ lcb_connectCloseCb ,	"connectCloseCb" },
+	{ lcb_timerCb ,			"timerCb" },
 };
 
 int cbFuncLuaRef[lcb_size];

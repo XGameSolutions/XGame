@@ -14,11 +14,14 @@ using namespace std;
 
 void loadLib(lua_State * L);
 
-extern "C" 
+#ifdef LUA_BUILD_AS_DLL
+extern "C"
 {
-LUA_API void xdInit(lua_State* L);
-LUA_API void xdRegistFunc(lua_State* L);
-LUA_API void xdRunOnce();
+	LUA_API void xdInit(lua_State* L);
+	LUA_API void xdRegistFunc(lua_State* L);
+	LUA_API void xdRunOnce();
 }
+#endif // LUA_BUILD_AS_DLL
+
 #endif // !LUA2C_H
 

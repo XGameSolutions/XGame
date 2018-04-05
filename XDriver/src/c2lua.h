@@ -21,6 +21,7 @@ enum cbEnum {
 	lcb_connectCb,
 	lcb_connectErrorCb,
 	lcb_connectCloseCb,
+	lcb_timerCb,
 	lcb_size,
 };
 

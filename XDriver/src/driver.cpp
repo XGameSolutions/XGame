@@ -1,11 +1,11 @@
 #include "driver.h"
 
-void XDriver::init()
+void XDriver::init(lua_State* L)
 {
+	this->L = L;
 	loop = uv_default_loop();
-	L = luaL_newstate();
-	luaL_openlibs(L);
-	loadLib(L);
+	luaL_openlibs(this->L);
+	loadLib(this->L);
 }
 
 void XDriver::runLoop()

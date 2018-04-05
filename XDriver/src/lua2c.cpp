@@ -5,7 +5,9 @@
 #include "driver.h"
 #include "proto.h"
 
+#ifdef LUA_BUILD_AS_DLL
 #define LUA_API __declspec(dllexport)
+#endif // LUA_BUILD_AS_DLL
 
 static int xd_createListener(lua_State* L) {
 	uint32_t id = (uint32_t)lua_tointeger(L, 1);
@@ -167,9 +169,41 @@ static int xd_errorName(lua_State* L) {
 	return 1;
 }
 
+void timerCb(uv_timer_t* handle) {
+	uint32_t timerId = *(uint32_t*)(handle->data);
+	lua_State* L = XDriver::getInstance().getLuaState();
+	cbcall(L, lcb_timerCb, timerId);
+}
+
+static int xd_createTimer(lua_State* L) {
+	uint32_t id = (uint32_t)lua_tointeger(L, 1);
+	uint64_t timeout = (uint64_t)luaL_checkinteger(L, 2);
+	uint64_t repeat = (uint64_t)luaL_checkinteger(L, 3);
+	uv_timer_t* timer = new uv_timer_t;
+	timer->data = new uint32_t;
+	*(int32_t*)timer->data = id;
+	XDriver& driver = XDriver::getInstance();
+	driver.getLoop();
+	uv_timer_init(driver.getLoop(), timer);
+	uv_timer_start(timer, timerCb, timeout, repeat);
+	lua_pushlightuserdata(L, (void *)timer);
+	return 0;
+}
+
+static int xd_delTimer(lua_State* L) {
+	uv_timer_t* timer = (uv_timer_t *)lua_touserdata(L, 1);
+	uv_timer_stop(timer);
+	uv_close((uv_handle_t*)timer, NULL);
+	delete timer->data;
+	delete timer;
+	return 0;
+}
+
 static struct luaL_Reg callFunc[] =
 {
 	{"initCallback",		xd_initCallback },
+
+	//-----------------net-----------------
 	{"createListener",		xd_createListener },
 	{"createStream",		xd_createStream },
 	{"createConnector",		xd_createConnector },
@@ -188,6 +222,10 @@ static struct luaL_Reg callFunc[] =
 	{"registerSender",		xd_registerSender },
 	{"registerReceiver",	xd_registerReceiver },
 	{"registerProto",		xd_registerProto },
+
+	//-----------------timer-----------------
+	{"createTimer",			xd_createTimer },
+	{"delTimer",			xd_delTimer},
 	{ NULL, NULL }
 };
 
@@ -204,13 +242,14 @@ void loadLib(lua_State * L)
 	lua_pop(L, 1);
 }
 
+
+#ifdef LUA_BUILD_AS_DLL
 extern "C"
 {
 	LUA_API void xdInit(lua_State * L)
 	{
 		XDriver& driver = XDriver::getInstance();
-		driver.setLuaState(L);
-		driver.init();
+		driver.init(L);
 	}
 
 	LUA_API void xdRegistFunc(lua_State * L)
@@ -226,3 +265,4 @@ extern "C"
 		driver.runOnce();
 	}
 }
+#endif // LUA_BUILD_AS_DLL

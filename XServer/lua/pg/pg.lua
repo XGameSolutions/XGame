@@ -25,6 +25,10 @@ local function main()
         s2c.helloTest2(socket,"a","b")
     end)
     xd.listen(listener,"127.0.0.1",19001)
+
+    xd.addTimer(1000,1000,function()
+        print("timercb")
+    end)
 end
 
 local function traceback(msg)

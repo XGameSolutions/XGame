@@ -15,16 +15,15 @@ int main(int argc,char* argv[])
 		printf("param ERROR:need .lua path\n");
 		//system("pause");
 		//return 0;
-		//file = "C:/work/project/XGame/XServer/lua/pg/pg.lua";
-		file = "C:/work/project/XGame/XServer/lua/pc/pc.lua";
+		file = "C:/work/project/XGame/XServer/lua/pg/pg.lua";
+		//file = "C:/work/project/XGame/XServer/lua/pc/pc.lua";
 	}
 	else {
 		file = argv[1];
 	}
 	lua_State* L = luaL_newstate();
 	XDriver& driver = XDriver::getInstance();
-	driver.init();
-	driver.setLuaState(L);
+	driver.init(L);
 	int r = luaL_dofile(L, file);
 	if (r)
 	{

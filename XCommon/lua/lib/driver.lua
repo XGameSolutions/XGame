@@ -11,12 +11,17 @@ if xd == nil then
     xd.tbConn.maxId     = 0
     xd.tbProtoGroup     = {}
     xd.tbProtoGroup.maxId = 0
+    xd.tbTimer          = {}
+    xd.tbTimer.maxId    = 1
+    xd.tbTimerCb        = {}
 end
 
 local tbListener        = xd.tbListener
 local tbStream          = xd.tbStream
 local tbConn            = xd.tbConn
 local tbProtoGroup      = xd.tbProtoGroup
+local tbTimer           = xd.tbTimer
+local tbTimerCb         = xd.tbTimerCb      
 
 function xd.createListener(cb)
     local listener =  {}
@@ -143,6 +148,22 @@ function xd.send(stream, msg)
     driver.sendString(stream._stream, msg, string.len(msg))
 end
 
+function xd.addTimer(timeout,repeattime,func)
+    local timerId = tbTimer.maxId
+    local timer = driver.createTimer(timerId,timeout,repeattime)
+    tbTimer[timerId] = timer
+    tbTimerCb[timerId] = func
+    tbTimer.maxId = tbTimer.maxId + 1
+    return timerId
+end
+
+function xd.delTimer(timerId)
+    local timer = tbTimer[timerId]
+    if timer then
+        driver.delTimer(timer)
+    end
+end
+
 function xdcb.errorCb(err)
     print("xdcb.errorCb:", err)
 end
@@ -203,6 +224,13 @@ end
 
 function xdcb.connectCloseCb(id)
     print("xdcb.connectCloseCb:", id)
+end
+
+function xdcb.timerCb(timerId)
+    local func = tbTimerCb[timerId]
+    if func then
+        func()
+    end
 end
 
 driver.initCallback()

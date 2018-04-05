@@ -26,8 +26,8 @@ public:
 	XDriver& operator=(const XDriver&) = delete;
 
 	uv_loop_t* getLoop() { return loop; }
-	void setLuaState(lua_State* L) { this->L = L; }
-	void init();
+	lua_State* getLuaState() { return L; }
+	void init(lua_State* L);
 	void runLoop();
 	void runOnce();
 	void close();
