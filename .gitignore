@@ -1,11 +1,11 @@
 /.vs
 
-/XClient/.vs
-/XClient/Library
-/XClient/Temp
-/XClient/UnityPackageManager
-/XClient/Assets/XLua/Examples
-/XClient/Assets/XLua/Resources
+/XClientUnity/.vs
+/XClientUnity/Library
+/XClientUnity/Temp
+/XClientUnity/UnityPackageManager
+/XClientUnity/Assets/XLua/Examples
+/XClientUnity/Assets/XLua/Resources
 
 /XDriver/.vs
 /XDriver/project/.vs
