@@ -20,7 +20,7 @@ uint32_t XProtoGroup::registerProto(const char * params)
 {
 	XProto* proto = new XProto();
 	uint16_t id = (uint16_t)protos.size();
-	uint32_t lenConst = 3;
+	uint32_t lenConst = 2;
 	uint32_t lenParams = strlen(params);
 	uint32_t numStrParam = 0;
 	for (uint32_t i = 0; i < lenParams; i++) {
@@ -76,11 +76,12 @@ int XProtoGroup::readProto(char * cache, uint32_t len)
 			readError = re_INVALID_ID;
 			return 0;
 		}
-		uint8_t num = *((uint8_t*)(data + 2));
+		/*uint8_t num = *((uint8_t*)(data + 2));
 		if (num != this->protoIndex) {
+			printf("ERROR:currIndex=%d,needIndex=%d\n", num, this->protoIndex);
 			readError = re_INVALID_NUM;
 			return 0;
-		}
+		}*/
 	}
 	XProto* proto = this->protos[this->curProtoId];
 	if (lenLeft < proto->lenConst) {
@@ -90,8 +91,9 @@ int XProtoGroup::readProto(char * cache, uint32_t len)
 		readProto(data, proto);
 		return 1;
 	}
-	printf("XProtoGroup::readProto:strnum=%d\n",proto->numStrParams);
 	uint32_t lenCurrent = proto->lenConst + this->strParamLen;
+	printf("XProtoGroup::readProto:readLen=%d,strnum=%d,lenLeft=%d,lenCurr=%d\n",
+		readTotalLen, proto->numStrParams, lenLeft, lenCurrent);
 	if (lenLeft < lenCurrent) {
 		return 0;
 	}
@@ -119,7 +121,8 @@ int XProtoGroup::readProto(char * cache, uint32_t len)
 void XProtoGroup::readProto(char * data, XProto * proto)
 {
 	callProto(data, proto);
-	this->readTotalLen = proto->lenConst + this->strParamLen;
+	this->readTotalLen += proto->lenConst + this->strParamLen;
+	printf("XProtoGroup::readProto:readTotalLen=%d\n", readTotalLen);
 	++(this->protoIndex);
 	waitNewProto();
 }
@@ -134,7 +137,7 @@ void XProtoGroup::callProto(char * data, XProto * proto)
 	lua_checkstack(L, nargs + 1);
 	uint16_t id = read_uint16(data, &offset);
 	//package num
-	offset += 1;
+	//offset += 1;
 	cbpush(L, lcb_dataCb, this->stream->getId());
 	lua_pushinteger(L, curProtoId);
 	int32_t val = 0;
@@ -171,6 +174,7 @@ void XProtoGroup::callProto(char * data, XProto * proto)
 			break;
 		}
 	}
+	printf("XProtoGroup::callProto£ºid=%d\n", curProtoId);
 	cbrun(L, nargs);
 }
 
@@ -183,7 +187,7 @@ void XProtoGroup::waitNewProto()
 
 void XProtoGroup::writeProto(lua_State * L, uint32_t luaStackIndex, uint16_t protoId)
 {
-	if (!stream->isWritable()) return;
+	if (stream == NULL || !stream->isWritable()) return;
 	if (protoId<0 || protoId>protos.size()) return;
 	XProto* proto = protos[protoId];
 	uint32_t strBytes = 0;
@@ -199,7 +203,7 @@ void XProtoGroup::writeProto(lua_State * L, uint32_t luaStackIndex, uint16_t pro
 	char* data = new char[totalBytes];
 	this->writeOffset = 0;
 	write_uint16(data, protoId);
-	write_uint8(data, protoIndex);
+	//write_uint8(data, protoIndex);
 	for (uint32_t i = 0; i < lenFormat; i++) {
 		uint32_t index = luaStackIndex + i;
 		switch (format[i]) {
@@ -234,9 +238,9 @@ void XProtoGroup::writeProto(lua_State * L, uint32_t luaStackIndex, uint16_t pro
 			break;
 		}
 	}
-	protoIndex++;
 	stream->write(data, totalBytes);
-	printf("send:%d\n",totalBytes);
+	printf("send:index=%d,bytes=%d\n", protoIndex,totalBytes);
+	protoIndex++;
 	writeOffset = 0;
 }
 
