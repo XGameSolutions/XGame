@@ -14,7 +14,7 @@ public class Startup : MonoBehaviour
         luaenv = new LuaEnv();
         luaenv.AddLoader((ref string filename) =>
         {
-            string path = Application.dataPath + "/../../XClientLuaScript/lua/" + filename + ".lua";
+            string path = Application.dataPath + "/../../XClientLua/lua/" + filename + ".lua";
             if (File.Exists(path))
             {
                 return File.ReadAllBytes(path);
