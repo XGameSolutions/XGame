@@ -328,11 +328,12 @@ namespace XLua
 
         public void Tick()
         {
+            LuaAPI.xdRunOnce();
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnvLock)
             {
 #endif
-                var _L = L;
+            var _L = L;
                 lock (refQueue)
                 {
                     while (refQueue.Count > 0)

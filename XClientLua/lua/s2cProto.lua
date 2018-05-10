@@ -1,4 +1,3 @@
-
 function s2c.helloTest(tbSocket,b,c,C,s,S,i,I,d)
     print("s2c.helloTest:",b,c,C,s,S,i,I,d)
 end

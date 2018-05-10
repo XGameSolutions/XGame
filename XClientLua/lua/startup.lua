@@ -16,13 +16,17 @@ local function main()
     print("client start...")
     print(c2s._id)
     print(s2c._id)
-    local conn = xd.createConnector(function (socket)
+    local ip = "127.0.0.1"
+    local port = 19001
+    local conn
+    conn = xd.createConnector(function(socket)
         print("connect success!")
         xd.startRead(socket)
         xd.registerSender(socket,c2s)
         xd.registerReader(socket,s2c)
+        --c2s.myTest(socket,1000)
     end)
-    xd.connect(conn,"127.0.0.1",19001)
+    xd.connect(conn,ip,port)
 end
 
 local function traceback(msg)
