@@ -88,6 +88,7 @@ function xd.sender()
         send._tbProtoId[funcname] = protoId
         send[funcname] = function(tbSocket, ...)
             local protoId = send._tbProtoId[funcname]
+            print("send:",funcname)
             driver.sendData(tbSocket._stream, protoId, ...)
         end
     end
@@ -204,6 +205,10 @@ end
 
 function xdcb.endCb(id)
     print("xdcb.endCb:", id)
+    local stream = tbStream[id]
+    if stream then
+        stream:close()
+    end
     xd.releaseStream(id)
 end
 

@@ -143,7 +143,7 @@ int XStream::read(uint32_t len)
 		return error;
 	}
 	uint32_t lenRead = reader->getReadTotalBytes();
-	printf("XStream::read:%d,%d\n",lenRead,len);
+	//printf("XStream::read:%d,%d\n",lenRead,len);
 	if (lenRead == len) {
 		freeCache();
 	}
@@ -204,7 +204,7 @@ void XStream::onAllocCb(size_t size, uv_buf_t * buf)
 	if (this->readCache == NULL) {
 		this->readCache = new char[size];
 		this->readTotalBytes = size;
-		printf("new freeCache:%d\n", readCache);
+		//printf("new freeCache:%d\n", readCache);
 	}
 	if (this->readWaitBytes > size) {
 		buf->base = NULL;
@@ -218,7 +218,7 @@ void XStream::onAllocCb(size_t size, uv_buf_t * buf)
 
 void XStream::onReadCb(ssize_t nread, const uv_buf_t * buf)
 {
-	printf("XStream::onReadCb:%d\n", nread);
+	//printf("XStream::onReadCb:%d\n", nread);
 	if (nread < 0) {
 		this->readError(nread);
 		if (buf->base != NULL) {

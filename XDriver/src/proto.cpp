@@ -92,8 +92,8 @@ int XProtoGroup::readProto(char * cache, uint32_t len)
 		return 1;
 	}
 	uint32_t lenCurrent = proto->lenConst + this->strParamLen;
-	printf("XProtoGroup::readProto:readLen=%d,strnum=%d,lenLeft=%d,lenCurr=%d\n",
-		readTotalLen, proto->numStrParams, lenLeft, lenCurrent);
+	//printf("XProtoGroup::readProto:readLen=%d,strnum=%d,lenLeft=%d,lenCurr=%d\n",
+	//	readTotalLen, proto->numStrParams, lenLeft, lenCurrent);
 	if (lenLeft < lenCurrent) {
 		return 0;
 	}
@@ -122,7 +122,7 @@ void XProtoGroup::readProto(char * data, XProto * proto)
 {
 	callProto(data, proto);
 	this->readTotalLen += proto->lenConst + this->strParamLen;
-	printf("XProtoGroup::readProto:readTotalLen=%d\n", readTotalLen);
+	//printf("XProtoGroup::readProto:readTotalLen=%d\n", readTotalLen);
 	++(this->protoIndex);
 	waitNewProto();
 }
@@ -174,7 +174,7 @@ void XProtoGroup::callProto(char * data, XProto * proto)
 			break;
 		}
 	}
-	printf("XProtoGroup::callProto£ºid=%d\n", curProtoId);
+	//printf("XProtoGroup::callProto£ºid=%d\n", curProtoId);
 	cbrun(L, nargs);
 }
 
@@ -239,7 +239,7 @@ void XProtoGroup::writeProto(lua_State * L, uint32_t luaStackIndex, uint16_t pro
 		}
 	}
 	stream->write(data, totalBytes);
-	printf("send:index=%d,bytes=%d\n", protoIndex,totalBytes);
+	//printf("send:index=%d,bytes=%d\n", protoIndex,totalBytes);
 	protoIndex++;
 	writeOffset = 0;
 }
