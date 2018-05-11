@@ -14,8 +14,6 @@ local function main()
     includePath()
     require("header")
     print("client start...")
-    print(c2s._id)
-    print(s2c._id)
     local ip = "127.0.0.1"
     local port = 19001
     local conn
