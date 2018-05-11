@@ -99,6 +99,7 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>..\include\lua_5.3.4;..\include\libuv_1.x\include;..\include\recast\DebugUtils\Include;..\include\recast\Detour\Include;..\include\recast\DetourCrowd\Include;..\include\recast\DetourTileCache\Include;..\include\recast\Recast\Include;..\include\recast\RecastDemo\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG;WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;_HAS_EXCEPTIONS=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
     </ClCompile>
     <Link>
       <AdditionalDependencies>../lib/x64/libuv.lib;../lib/x64/lua.lib;../lib/x64/recast.lib;advapi32.lib;iphlpapi.lib;psapi.lib;shell32.lib;ws2_32.lib;user32.lib;userenv.lib</AdditionalDependencies>

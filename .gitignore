@@ -6,11 +6,21 @@
 /XClientUnity/UnityPackageManager
 /XClientUnity/Assets/XLua/Examples
 /XClientUnity/Assets/XLua/Resources
+/XClientUnity/Assets/ThirdLib/ParadoxNotion
+/XClientUnity/Assets/ThirdLib/ParadoxNotion.meta
 
 /XDriver/.vs
 /XDriver/project/.vs
 /XDriver/bin
 /XDriver/obj
+/XDriver/lib/recast.pdb
+/XDriver/lib/x64/libuv.pdb
+/XDriver/lib/x64/lua.pdb
+/XDriver/lib/x64/recast.pdb
+/XDriver/lib/x64/xlua.exp
+/XDriver/lib/x64/xlua.ilk
+/XDriver/lib/x64/xlua.pdb
+
 
 /XServer/.vs
 
