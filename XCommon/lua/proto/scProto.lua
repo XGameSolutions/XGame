@@ -13,6 +13,9 @@
 --c2s
 c2s.registerProto("myTest",         "i")
 
+c2s.registerProto("btStartDebug",   "")
+c2s.registerProto("btStopDebug",    "")
+
 
 --s2c
 s2c.registerProto("helloTest",      "bcCsSiIda")

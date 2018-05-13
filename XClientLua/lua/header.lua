@@ -5,4 +5,5 @@ s2c = xd.reader()
 
 require "proto/scProto"
 
-require "net/s2cProto"
+require "net/c2sBT"
+require "net/s2cTest"

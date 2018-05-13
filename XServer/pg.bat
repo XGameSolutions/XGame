@@ -1,1 +1,1 @@
-xdriver lua/pg/pg.lua
+xdriver lua/pg/main/pg.lua

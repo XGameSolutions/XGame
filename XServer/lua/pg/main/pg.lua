@@ -2,6 +2,7 @@
 local function includePath()
     local paths = {
         "C:/work/project/XGame/XServer/lua/?.lua",
+        "C:/work/project/XGame/XServer/lua/pg/?.lua",
         "C:/work/project/XGame/XCommon/lua/?.lua",
     }
     for k,path in pairs(paths) do
@@ -11,7 +12,7 @@ end
 
 local function main()
     includePath()
-    require("pg.pgHead")
+    require("main.pgHead")
     print("pg start...")
     local listener
     local socket
