@@ -22,7 +22,6 @@ local function main()
         xd.startRead(socket)
         xd.registerSender(socket,c2s)
         xd.registerReader(socket,s2c)
-        --c2s.myTest(socket,1000)
     end)
     xd.connect(conn,ip,port)
 end

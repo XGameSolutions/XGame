@@ -33,6 +33,7 @@ public class Startup : MonoBehaviour
             }
         });
         luaenv.DoString("require('main/startup')");
+        BTDebug.Init(luaenv);
     }
 
     void Update()

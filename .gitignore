@@ -9,6 +9,10 @@
 /XClientUnity/Assets/XLua/Tutorial
 /XClientUnity/Assets/ThirdLib/ParadoxNotion
 /XClientUnity/Assets/ThirdLib/ParadoxNotion.meta
+/XClientUnity/XClientUnity.sln
+/XClientUnity/XClientUnity.csproj
+/XClientUnity/XClientUnity.Editor.csproj
+/XClientUnity/XClientUnity.Plugins.csproj
 
 /XDriver/.vs
 /XDriver/project/.vs
@@ -24,7 +28,6 @@
 
 
 /XServer/.vs
-
 *.vcxproj.filters
 *.vcxproj.user
 *.pdb

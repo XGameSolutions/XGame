@@ -13,8 +13,8 @@
 --c2s
 c2s.registerProto("myTest",         "i")
 
-c2s.registerProto("btStartDebug",   "")
-c2s.registerProto("btStopDebug",    "")
+c2s.registerProto("btStartDebug",   "i")
+c2s.registerProto("btStopDebug",    "i")
 
 
 --s2c

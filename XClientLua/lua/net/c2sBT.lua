@@ -1,11 +1,18 @@
 
 
-function startDebug()
-    
+function btStartDebug(id)
+    print("btStartDebug:",id)
 end
 
-function stopDebug()
+function btStopDebug(id)
+    print("btStopDebug:",id)
 end
 
-function pause()
+function btStart(id)
+end
+
+function btPause(id)
+end
+
+function btStop(id)
 end
