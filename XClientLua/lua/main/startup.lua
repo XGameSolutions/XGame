@@ -22,6 +22,7 @@ local function main()
         xd.startRead(socket)
         xd.registerSender(socket,c2s)
         xd.registerReader(socket,s2c)
+        _G.g_socket = socket
     end)
     xd.connect(conn,ip,port)
 end

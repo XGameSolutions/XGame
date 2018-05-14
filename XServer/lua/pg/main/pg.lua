@@ -4,18 +4,19 @@ local function includePath()
         "C:/work/project/XGame/XServer/lua/?.lua",
         "C:/work/project/XGame/XServer/lua/pg/?.lua",
         "C:/work/project/XGame/XCommon/lua/?.lua",
+        "C:/work/project/LuaBT/bt/?.lua",
     }
     for k,path in pairs(paths) do
         package.path = package.path .. ";" .. path
     end
 end
 
-local function main()
-    includePath()
-    require("main.pgHead")
-    print("pg start...")
+local function init()
+    aiMgr.init()
+end
+
+local function listen()
     local listener
-    local socket
     listener = xd.createListener(function(socket)
         print("new client:")
         _G.g_socket = socket
@@ -37,6 +38,15 @@ local function main()
 
         end
     end)
+end
+
+local function main()
+    includePath()
+    require("main.pgHead")
+    print("pg start...")
+    init()
+    listen()
+    aiMgr.addTestAi()
 end
 
 local function traceback(msg)

@@ -1,3 +1,4 @@
+require("utils.namespace")
 require("lib.driver")
 
 s2c = xd.sender()
@@ -7,3 +8,5 @@ require("proto.scProto")
 
 require("net.c2sBT")
 require("net.c2sTest")
+
+require("ai.aiMgr")
