@@ -1,14 +1,14 @@
 namespace("aiMgr")
-require("btHeader")
-require("ai.aiHeader")
 
 tbBT = tbBT or {}
 
-function aiMgr.test()
+function test()
     print("ai test")
 end
 
-function aiMgr.init()
+function init()
+    require("btHeader")
+    require("ai.aiHeader")
     local function tick()
         bt.time = bt.time + bt.deltaTime
         bt.runLoopFunc()
@@ -27,24 +27,24 @@ function aiMgr.init()
     xd.addTimer(0,bt.deltaTime * 1000,tick)
 end
 
-function aiMgr.addTestAi()
+function addTestAi()
     local btree = bt.BehaviourTree.new()
     btree:load("test")
     btree.id = 1
     tbBT[btree.id] = btree
 end
 
-function aiMgr.btStartDebug(id)
+function btStartDebug(id)
 end
 
-function aiMgr.btStopDebug(id)
+function btStopDebug(id)
 end
 
-function aiMgr.btStart(id)
+function btStart(id)
 end
 
-function aiMgr.btPause(id)
+function btPause(id)
 end
 
-function aiMgr.btStop(id)
+function btStop(id)
 end
