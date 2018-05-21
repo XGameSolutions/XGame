@@ -15,10 +15,12 @@ c2s.registerProto("myTest",         "i")
 
 c2s.registerProto("btStartDebug",   "i")
 c2s.registerProto("btStopDebug",    "i")
-
+c2s.registerProto("btSubTree",      "ii")
 
 --s2c
 s2c.registerProto("helloTest",      "bcCsSiIda")
 s2c.registerProto("helloTest2",     "aa")
 s2c.registerProto("helloTest3",     "a")
 s2c.registerProto("helloTest4",     "ia")
+
+s2c.registerProto("btNodeInfo",     "ia")

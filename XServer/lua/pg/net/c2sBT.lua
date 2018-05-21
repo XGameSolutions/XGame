@@ -23,3 +23,7 @@ function c2s.btStop(tbSocket,id)
     print("c2s.btStop:",id)
     aiMgr.btStop(id)
 end
+
+function c2s.btSubTree(tbSocket,id,subTreeId)
+    print("c2s.btSubTree:",id,subTreeId)
+end

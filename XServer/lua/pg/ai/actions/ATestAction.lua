@@ -10,6 +10,6 @@ function ATestAction:init(jsonData)
 end
 
 function ATestAction:onExecute()
-    print("ATestAction:onExecute")
+    self:debug("ATestAction:onExecute")
     self:endAction(true)
 end

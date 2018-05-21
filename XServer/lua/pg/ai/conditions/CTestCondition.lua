@@ -11,6 +11,6 @@ function CTestCondition:init(jsonData)
 end
 
 function CTestCondition:onCheck()
-    print("CTestCondition:onCheck")
+    self:debug("CTestCondition:onCheck")
     return true
 end

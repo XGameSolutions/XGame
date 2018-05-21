@@ -21,3 +21,7 @@ end
 function btStop(id)
     c2s.btStop(g_socket,id)
 end
+
+function btSubTree(id,subTreeId)
+    c2s.btSubTree(id,subTreeId)
+end
