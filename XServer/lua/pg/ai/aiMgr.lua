@@ -1,7 +1,6 @@
 namespace("aiMgr")
 
 tbBT = tbBT or {}
-tbDebug = tbDebug or {}
 
 function test()
     print("ai test")
@@ -16,7 +15,7 @@ function init()
         for k,btree in pairs(tbBT) do
             if btree then
                 btree:update()
-                self:checkDebug()
+                btree:checkDebugger()
             end
         end
     end
@@ -31,19 +30,16 @@ function addTestAi()
     tbBT[btree.id] = btree
 end
 
-function checkDebug()
-end
-
-function btStartDebug(id)
+function btStartDebug(id,tbSocket)
     local btree = tbBT[id]
     if not btree then return end
-    btree.agent.isBTDebug = true
+    btree:addDebugger(tbSocket)
 end
 
-function btStopDebug(id)
+function btStopDebug(id,tbSocket)
     local btree = tbBT[id]
     if not btree then return end
-    btree.agent.isBTDebug = false
+    btree:delDebugger(tbSocket)
 end
 
 function btStart(id)

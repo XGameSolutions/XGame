@@ -1,12 +1,12 @@
 
 function c2s.btStartDebug(tbSocket,id)
     print("c2s.btStartDebug:",id)
-    aiMgr.btStartDebug(id)
+    aiMgr.btStartDebug(id,tbSocket)
 end
 
 function c2s.btStopDebug(tbSocket,id)
     print("c2s.btStopDebug:",id)
-    aiMgr.btStopDebug(id)
+    aiMgr.btStopDebug(id,tbSocket)
 end
 
 function c2s.btStart(tbSocket,id)

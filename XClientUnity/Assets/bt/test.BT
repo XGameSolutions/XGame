@@ -4,8 +4,8 @@
     "nodes": [
         {
             "_position": {
-                "x": 5359.0,
-                "y": 5128.0
+                "x": 5369.0,
+                "y": 5198.0
             },
             "$type": "NodeCanvas.BehaviourTrees.Sequencer",
             "$id": "2"
@@ -18,8 +18,8 @@
                 "$type": "NodeCanvas.Tasks.Actions.Wait"
             },
             "_position": {
-                "x": 5196.0,
-                "y": 5235.0
+                "x": 5189.0,
+                "y": 5304.0
             },
             "$type": "NodeCanvas.BehaviourTrees.ActionNode",
             "$id": "3"
@@ -32,8 +32,8 @@
                 "$type": "NodeCanvas.Tasks.Actions.Wait"
             },
             "_position": {
-                "x": 5497.0,
-                "y": 5241.0
+                "x": 5538.0,
+                "y": 5308.0
             },
             "$type": "NodeCanvas.BehaviourTrees.ActionNode",
             "$id": "6"

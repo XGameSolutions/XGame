@@ -23,4 +23,4 @@ s2c.registerProto("helloTest2",     "aa")
 s2c.registerProto("helloTest3",     "a")
 s2c.registerProto("helloTest4",     "ia")
 
-s2c.registerProto("btNodeInfo",     "ia")
+s2c.registerProto("btInfo",         "a")
