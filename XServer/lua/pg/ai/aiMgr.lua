@@ -7,8 +7,10 @@ function test()
 end
 
 function init()
-    require("btHeader")
+    require("bt.btHeader")
     require("ai.aiHeader")
+    require("ai.api.server.APIAction")
+    require("ai.api.server.APICondition")    
     local function tick()
         bt.time = bt.time + bt.deltaTime
         bt.runLoopFunc()
