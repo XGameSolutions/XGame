@@ -1,10 +1,10 @@
 
 local function includePath()
     local paths = {
-        "C:/work/project/XGame/XServer/lua/?.lua",
-        "C:/work/project/XGame/XServer/lua/pg/?.lua",
-        "C:/work/project/XGame/XCommon/lua/?.lua",
-        "C:/work/project/LuaBT/LuaBT/?.lua",
+        "../XServer/lua/?.lua",
+        "../XServer/lua/pg/?.lua",
+        "../XCommon/lua/?.lua",
+        "../../LuaBT/LuaBT/?.lua",
     }
     for k,path in pairs(paths) do
         package.path = package.path .. ";" .. path

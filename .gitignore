@@ -32,3 +32,4 @@
 *.vcxproj.user
 *.pdb
 *.exp
+*.cache
