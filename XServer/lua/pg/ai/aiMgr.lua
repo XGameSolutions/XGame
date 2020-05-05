@@ -10,7 +10,8 @@ function init()
     require("bt.btHeader")
     require("ai.aiHeader")
     require("ai.api.server.APIAction")
-    require("ai.api.server.APICondition")    
+    require("ai.api.server.APICondition")
+    bt.ASSERT_DIR = "../../LuaBT/test/"
     local function tick()
         bt.time = bt.time + bt.deltaTime
         bt.runLoopFunc()
