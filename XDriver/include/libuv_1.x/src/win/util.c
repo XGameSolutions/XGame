@@ -273,7 +273,7 @@ int uv_chdir(const char* dir) {
 
   if (utf16_len < 2 || utf16_buffer[1] != L':') {
     /* Doesn't look like a drive letter could be there - probably an UNC */
-    /* path. TODO: Need to handle win32 namespaces like \\?\C:\ ? */
+    /* path. TODO: Need to handle win32 Namespaces like \\?\C:\ ? */
     drive_letter = 0;
   } else if (utf16_buffer[0] >= L'A' && utf16_buffer[0] <= L'Z') {
     drive_letter = utf16_buffer[0];

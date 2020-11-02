@@ -13,7 +13,7 @@ using System;
 require "TemplateCommon"
 %>
 
-namespace XLua
+Namespace XLua
 {
     public partial class DelegateBridge : DelegateBridgeBase
     {

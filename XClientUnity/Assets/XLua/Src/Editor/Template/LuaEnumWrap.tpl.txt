@@ -15,7 +15,7 @@ require "TemplateCommon"
 local enum_or_op = debug.getmetatable(CS.System.Reflection.BindingFlags.Public).__bor
 %>
 
-namespace XLua.CSObjectWrap
+Namespace XLua.CSObjectWrap
 {
     using Utils = XLua.Utils;
     <%ForEachCsList(types, function(type)

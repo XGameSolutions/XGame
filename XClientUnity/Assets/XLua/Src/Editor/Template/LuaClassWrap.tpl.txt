@@ -10,7 +10,7 @@ using LuaCSFunction = XLua.LuaDLL.lua_CSFunction;
 
 using XLua;
 using System.Collections.Generic;
-<%ForEachCsList(namespaces, function(namespace)%>using <%=namespace%>;<%end)%>
+<%ForEachCsList(Namespaces, function(Namespace)%>using <%=Namespace%>;<%end)%>
 <%
 require "TemplateCommon"
 
@@ -117,7 +117,7 @@ end)
 local generic_arg_list, type_constraints = GenericArgumentList(type)
 
 %>
-namespace XLua.CSObjectWrap
+Namespace XLua.CSObjectWrap
 {
     using Utils = XLua.Utils;
     public class <%=CSVariableName(type)%>Wrap<%=generic_arg_list%> <%=type_constraints%>

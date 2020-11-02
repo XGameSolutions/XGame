@@ -239,7 +239,7 @@ static int uv__pipe_getsockpeername(const uv_pipe_t* handle,
 
 #if defined(__linux__)
   if (sa.sun_path[0] == 0)
-    /* Linux abstract namespace */
+    /* Linux abstract Namespace */
     addrlen -= offsetof(struct sockaddr_un, sun_path);
   else
 #endif

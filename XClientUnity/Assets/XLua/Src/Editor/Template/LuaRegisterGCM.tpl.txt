@@ -15,7 +15,7 @@ using System.Reflection;
 require "TemplateCommon"
 %>
 
-namespace XLua.CSObjectWrap
+Namespace XLua.CSObjectWrap
 {
     public class XLua_Gen_Initer_Register__
 	{
@@ -51,7 +51,7 @@ namespace XLua.CSObjectWrap
 	}
 	
 }
-namespace XLua
+Namespace XLua
 {
 	public partial class ObjectTranslator
 	{

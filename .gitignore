@@ -1,6 +1,8 @@
 /.vs
+/.vscode
 
 /XClientUnity/.vs
+/XClientUnity/.vscode
 /XClientUnity/Library
 /XClientUnity/Temp
 /XClientUnity/UnityPackageManager
@@ -31,3 +33,6 @@
 *.pdb
 *.exp
 *.cache
+*.DS_Store
+*.code-workspace
+*.csproj

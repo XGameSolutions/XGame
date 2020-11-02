@@ -1,4 +1,4 @@
-namespace("aiMgr")
+Namespace("aiMgr")
 
 tbBT = tbBT or {}
 

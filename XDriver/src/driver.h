@@ -12,7 +12,7 @@ extern "C"
 }
 
 #include <iostream>
-using namespace std;
+using Namespace std;
 
 class XDriver
 {

@@ -328,8 +328,8 @@ INLINE static int fs__readlink_handle(HANDLE handle, char** target_ptr,
 
     /* Real symlinks can contain pretty much everything, but the only thing */
     /* we really care about is undoing the implicit conversion to an NT */
-    /* namespaced path that CreateSymbolicLink will perform on absolute */
-    /* paths. If the path is win32-namespaced then the user must have */
+    /* Namespaced path that CreateSymbolicLink will perform on absolute */
+    /* paths. If the path is win32-Namespaced then the user must have */
     /* explicitly made it so, and we better just return the unmodified */
     /* reparse data. */
     if (w_target_len >= 4 &&
@@ -1236,7 +1236,7 @@ INLINE static int fs__stat_handle(HANDLE handle, uv_stat_t* statbuf,
 INLINE static void fs__stat_prepare_path(WCHAR* pathw) {
   size_t len = wcslen(pathw);
 
-  /* TODO: ignore namespaced paths. */
+  /* TODO: ignore Namespaced paths. */
   if (len > 1 && pathw[len - 2] != L':' &&
       (pathw[len - 1] == L'\\' || pathw[len - 1] == L'/')) {
     pathw[len - 1] = '\0';

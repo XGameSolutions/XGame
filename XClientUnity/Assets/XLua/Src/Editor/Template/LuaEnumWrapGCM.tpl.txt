@@ -14,7 +14,7 @@ using System.Collections.Generic;
 require "TemplateCommon"
 %>
 
-namespace XLua
+Namespace XLua
 {
 	public partial class ObjectTranslator
     {

@@ -15,7 +15,7 @@ require "TemplateCommon"
 
 %>
 
-namespace XLua.CSObjectWrap
+Namespace XLua.CSObjectWrap
 {
     public class <%=CSVariableName(type)%>Bridge : LuaBase, <%=CsFullTypeName(type)%>
     {

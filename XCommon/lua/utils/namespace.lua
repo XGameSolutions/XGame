@@ -1,19 +1,18 @@
 
 
-tbNameSpace = tbNameSpace or {}
+tbNamespace = tbNamespace or {}
 tbRequireName = tbRequireName or {}
 
-function namespace(strSpaceName)
-    if not tbNameSpace[strSpaceName] then
-        local M = {}
-        _G[strSpaceName] = M
-        setmetatable(M, {__index = _G })
-        _ENV[strSpaceName] = M
-        tbNameSpace[strSpaceName] = true
+function Namespace(strSpaceName, tData)
+    if not _G[strSpaceName] then
+        _G[strSpaceName] = tData or {}
+        _G[strSpaceName].__spaceName__ = strSpaceName
+        setmetatable(_G[strSpaceName], {__index = _G})
+        tbNamespace[strSpaceName] = true
     else
-        print("ERRPR:namespace have existed : " .. strSpaceName)
-        _ENV[strSpaceName] = _G[strSpaceName]
+        printWarn("ERRPR:Namespace have existed : " .. strSpaceName)
     end
+    return _G[strSpaceName]
 end
 
 local oldRequire = require
@@ -29,12 +28,12 @@ require = function (str)
 end
 
 function clearAllNamespace()
-    for k,v in pairs(tbNameSpace) do
+    for k,v in pairs(tbNamespace) do
         _G[k] = nil
     end
     for k,v in pairs(tbRequireName) do
         package.loaded[k] = nil
     end
-    tbNameSpace = {}
+    tbNamespace = {}
     tbRequireName = {}
 end
