@@ -4,6 +4,7 @@
 /XClientUnity/.vs
 /XClientUnity/.vscode
 /XClientUnity/Library
+/XClientUnity/obj
 /XClientUnity/Temp
 /XClientUnity/UnityPackageManager
 /XClientUnity/Assets/XLua/Examples
