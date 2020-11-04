@@ -6,7 +6,7 @@ function initRole(tRole)
     tRole.transform     = tRole.gameObject.transform
     tRole.model         = nil
     tRole.isLoaded      = false
-
+    Role.setFace(tRole, tRole.face or 0)
     return tRole 
 end
 
@@ -30,3 +30,18 @@ function setModel(tRole, model)
     tRole.model = model
     tRole.isLoaded = true
 end
+
+function setLocalPlayerComponent(tRole)
+    if tRole.characterController then return end
+    local cc = Util.getOrAddComponent(tRole.gameObject, typeof(UE.CharacterController))
+    cc.radius = 0.4
+    cc.height = 1.6
+    cc.skinWidth = 0.1
+    cc.slopeLimit = 45
+    cc.stepOffset = 0.1
+    cc.minMoveDistance = 0
+    cc.center = UE.Vector3(0,0,0)
+
+    tRole.characterController = cc
+end
+    

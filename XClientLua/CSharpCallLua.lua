@@ -10,6 +10,7 @@ function update(deltaTime, unscaledDeltaTime)
 end
 
 function lateUpdate(deltaTime, unscaledDeltaTime)
+    GameMain.lateUpdate(deltaTime)
 end
 
 function fixedUpdate(fixedDeltaTime)

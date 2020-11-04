@@ -16,15 +16,16 @@ _onLoading = _onLoading or nil
 
 -- 场景切换前的回调
 function _onBeforeScene()
-    CS.System.GC.Collect()
-    collectgarbage("collect")
+    LocalPlayerMove.stopWork()
     UIView.closeAllViewButExclude(LoadingView)
+    Util.gcAll()
 end
 
 -- 场景切换完成后的回调
 function _onAfterScene()
-    CS.System.GC.Collect()
-    collectgarbage("collect")
+    Util.gcAll()
+    LocalPlayerMove.startWork()
+
 end
 
 function _loadSceneCompeleted()
@@ -64,6 +65,7 @@ function switchSceneByName(strSceneName, onCompeleted, onLoading)
         _onBeforeScene()
         Assets.loadScene("empty", function()
             UE.SceneManagement.SceneManager.LoadScene("empty")
+            Util.gcAll()
             Assets.loadScene(strSceneName, function()
                 _asyncOperation = UE.SceneManagement.SceneManager.LoadSceneAsync(strSceneName)
                 _asyncOperation.allowSceneActivation = false

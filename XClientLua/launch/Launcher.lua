@@ -37,6 +37,7 @@ end
 function step5_loginView()
     UIView.openView(LoginView, function()
         LaunchView.setProgress(100)
+        GameMain.init()
     end)
 end
 

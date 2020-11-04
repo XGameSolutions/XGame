@@ -1,5 +1,6 @@
-/.vs
-/.vscode
+/*/.vs
+/*/.vscode
+/*/Logs
 
 /XClientUnity/.vs
 /XClientUnity/.vscode
@@ -27,8 +28,6 @@
 /XDriver/lib/x64/xlua.ilk
 /XDriver/lib/x64/xlua.pdb
 
-
-/XServer/.vs
 *.vcxproj.filters
 *.vcxproj.user
 *.pdb

@@ -5,6 +5,7 @@
 require "utils/Namespace"
 require "utils/Util"
 require "utils/TableUtil"
+require "utils/UEVectorUtil"
 
 -- require "net/c2sBT"
 -- require "net/s2cBT"
@@ -32,9 +33,12 @@ require "core/camera/CameraMgr"
 
 require "core/role/Role"
 require "core/role/RoleGen"
+require "core/role/RoleMove"
 require "core/role/LocalPlayer"
 require "core/role/LocalPlayerMove"
 require "core/role/internal/RoleHelper"
+
+require "core/input/Input"
 
 require "modules/login/LoginView"
 require "modules/loading/LoadingView"

@@ -7,15 +7,13 @@ function update(deltaTime)
     if count == 0 then return end
     local info = table.remove(_infos)
     if info.roleType == RoleConst.RoleType.LocalPlayer then
-        printError("RoleGen:addLocalPlayer")
-        Role.addLocalPlayer(info)
+        Role.addLocalPlayer(info, info.onLoaded)
     elseif info.roleType == RoleConst.RoleType.Player then
     elseif info.roleType == RoleConst.RoleType.Monster then
     end
 end
 
 function createLocalPlayer(roleId, x, y, z, face, callback)
-    printError("RoleGen.createLocalPlayer")
     local info = _initInfo(roleId, RoleConst.RoleType.LocalPlayer, x, y, z, face, callback)
     table.insert(_infos, info)
 end
@@ -34,10 +32,10 @@ function _initInfo(roleId, roleType, x, y, z, face, callback)
     local info = {}
     info.roleId = roleId
     info.roleType = roleType
-    info.x = x
-    info.y = y
-    info.z = z
-    info.face = face
-    info.callback = callback
+    info.x = x or 0
+    info.y = y or 0
+    info.z = z or 0
+    info.face = face or 0
+    info.onLoaded = callback
     return info
 end

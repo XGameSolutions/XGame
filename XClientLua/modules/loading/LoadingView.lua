@@ -1,9 +1,9 @@
 
 local _ENV = Namespace("LoadingView")
 
-uiABName = "ui_loading"
+uiABName    = "ui_loading"
 uiAssetName = "loading"
-uiType = UIConst.UIType.BaseUI
+uiType      = UIConst.UIType.BaseUI
 
 _slider     = _slider or nil
 _txtLeft    = _txtLeft or nil

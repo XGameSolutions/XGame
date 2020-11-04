@@ -1,9 +1,9 @@
 
 local _ENV = Namespace("LoginView")
 
-uiABName = "ui_login"
+uiABName    = "ui_login"
 uiAssetName = "login"
-uiType = UIConst.UIType.BaseUI
+uiType      = UIConst.UIType.BaseUI
 
 _btnLogin = _btnLogin or nil
 
