@@ -1,5 +1,6 @@
 local _ENV = Namespace("UIUtil")
 
+UE_EventTrigger = UE.EventSystems.EventTrigger
 
 function getComponent(transform, classtype, childPath)
     if childPath == nil then
@@ -30,9 +31,22 @@ function getGameobject(transform, childPath)
     end
 end
 
-function addListener(btn, callback)
+function addBtnListener(btn, callback)
     assert(btn.onClick ~= nil)
     btn.onClick:AddListener(callback)
+end
+
+function addEventListener(gameObject, strEventType, callback)
+    local eventTrigger = Util.getOrAddComponent(gameObject, typeof(UE_EventTrigger))
+    local entry = UE_EventTrigger.Entry()
+    local event = UE.EventSystems.EventTriggerType[strEventType]
+    if event then
+        entry.eventID = event
+        entry.callback:AddListener(callback)
+        eventTrigger.triggers:Add(entry)
+    else
+        printError(string.format("UI.addEventListener:  strEventType is nil"))
+    end
 end
 
 function setActive(transform, flag, childPath)

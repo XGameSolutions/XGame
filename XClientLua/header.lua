@@ -29,6 +29,7 @@ require "core/assets/Manifest"
 require "core/assets/ABLoader"
 require "core/assets/WebLoader"
 require "core/scene/Scene"
+require "core/map/Map"
 require "core/camera/CameraMgr"
 
 require "core/role/Role"
@@ -41,4 +42,7 @@ require "core/role/internal/RoleHelper"
 require "core/input/Input"
 
 require "modules/login/LoginView"
+
 require "modules/loading/LoadingView"
+
+require "modules/main/MainView"

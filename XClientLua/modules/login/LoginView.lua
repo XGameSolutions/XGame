@@ -10,17 +10,12 @@ _btnLogin = _btnLogin or nil
 function onOpenView()
     _btnLogin = UIUtil.getComponent(gameObject, typeof(UE.UI.Button), "btnLogin")
 
-    UIUtil.addListener(_btnLogin, _onClickBtnLogin)
+    UIUtil.addBtnListener(_btnLogin, _onClickBtnLogin)
 end
 
 function onCloseView()
 end
 
 function _onClickBtnLogin()
-    print("click btn login")
-    --UIView.openView(LoadingView)
-    Scene.switchSceneByName("battle", function()
-        print("switch to scene: battle")
-        RoleGen.createLocalPlayer(1)
-    end)
+    Map.enterBattle()
 end

@@ -8,6 +8,7 @@ local _ENV = Namespace("Patcher")
 _patchEndCallback = _patchEndCallback or nil
 
 function check(cb)
+    LaunchView.setLeftText("check patch ...")
     _patchEndCallback = cb
     --TODO:
     _pathDone()

@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using UnityEngine;
+using UnityEngine.EventSystems;
 using XLua;
 
 public static class XLuaConfig
@@ -27,6 +29,8 @@ public static class XLuaConfig
         typeof(Action<float>),
         typeof(Action<float,float>),
         typeof(UnityEngine.Events.UnityAction),
+        typeof(UnityEngine.Events.UnityAction<Vector2>),
+        typeof(UnityEngine.Events.UnityAction<BaseEventData>),
     };
 
     [LuaCallCSharp]

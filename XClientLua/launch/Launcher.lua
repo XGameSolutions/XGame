@@ -6,6 +6,7 @@ local _ENV = Namespace("Launcher")
 --------------------------------------------
 
 function start()
+    LaunchView.setLeftText("init...")
     Assets.init()
     UIView.init()
     CameraMgr.init()

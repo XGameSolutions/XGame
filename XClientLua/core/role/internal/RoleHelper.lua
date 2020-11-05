@@ -36,7 +36,7 @@ function setLocalPlayerComponent(tRole)
     local cc = Util.getOrAddComponent(tRole.gameObject, typeof(UE.CharacterController))
     cc.radius = 0.4
     cc.height = 1.6
-    cc.skinWidth = 0.1
+    cc.skinWidth = 0.01
     cc.slopeLimit = 45
     cc.stepOffset = 0.1
     cc.minMoveDistance = 0

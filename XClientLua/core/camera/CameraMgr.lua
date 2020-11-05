@@ -8,7 +8,7 @@ _rotationSpeed = _rotationSpeed or 200
 
 _rotationX = _rotationX or 0
 _rotationY = _rotationY or 0 
-_mouseSpeed = _mouseSpeed or 5
+_mouseSpeed = _mouseSpeed or 0.1
 
 _DIST_H = 7
 _DIST_V = 4
@@ -35,14 +35,16 @@ end
 
 function lateUpdate(deltaTime)
     if not _followTarget then return end
-
     local pos = _followTarget.forward * -1 * _DIST_H + _followTarget.up * _DIST_V + _followTarget.position
-    
+    local eulerX = _mainCameraRoot.transform.localEulerAngles.x
     _mainCameraRoot.transform.position = pos
-    _mainCameraRoot.transform:LookAt(_followTarget)
+    _mainCameraRoot.transform.localEulerAngles = UE.Vector3(-_rotationY, _followTarget.localEulerAngles.y, 0)
+end
 
+function dragMove(moveDelta)
+    if not moveDelta then return end
     local eulerY = _mainCameraRoot.transform.localEulerAngles.y
-    _rotationY = _rotationY + Input.getMouseY() * _mouseSpeed
+    _rotationY = _rotationY + moveDelta.y * _mouseSpeed
     _rotationY = UE.Mathf.Clamp(_rotationY, -15, 15)
-    _mainCameraRoot.transform.localEulerAngles = UE.Vector3(-_rotationY, eulerY, 0)
+    --_mainCameraRoot.transform.localEulerAngles = UE.Vector3(-_rotationY, eulerY, 0)
 end

@@ -66,4 +66,3 @@ end
 function getLookInputsHorizontal()
     return getMouseOrStickLookAxis(k_MouseAxisNameHorizontal, k_AxisNameJoystickLookHorizontal)
 end
-

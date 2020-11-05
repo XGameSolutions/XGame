@@ -14,32 +14,27 @@ using UnityEditor;
 
 namespace XBuild
 {
-    public static class BuildProject
+    public static class BuildTool
     {
         private static BuildParams s_Param;
 
-        [MenuItem("XBuild/BuildWindow")]
         public static void BuildWindow()
         {
             if (s_Param == null) s_Param = GetBuildParamsByCommandArgs(BuildTarget.StandaloneWindows);
             Debug.LogError(s_Param);
         }
 
-        [MenuItem("XBuild/BuildWindowAB")]
         public static void BuildWindowAB()
         {
             if (s_Param == null) s_Param = GetBuildParamsByCommandArgs(BuildTarget.StandaloneWindows);
             BuildAB(BuildTarget.StandaloneWindows, s_Param);
         }
 
-
-        [MenuItem("XBuild/BuildOSXAB")]
         public static void BuildOSXAB()
         {
             if (s_Param == null) s_Param = GetBuildParamsByCommandArgs(BuildTarget.StandaloneWindows);
             BuildAB(BuildTarget.StandaloneOSX, s_Param);
         }
-
 
         private static void BuildAB(BuildTarget target, BuildParams param)
         {
@@ -50,7 +45,6 @@ namespace XBuild
             BuildHelper.CreateDir(abPath);
             BuildPipeline.BuildAssetBundles(abDir, option, target);
         }
-
 
         private static void BuildPlayer(BuildTarget target, BuildParams param)
         {

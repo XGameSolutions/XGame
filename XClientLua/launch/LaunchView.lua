@@ -58,3 +58,11 @@ function setProgress(rate, cb)
     _destProgress = rate * 1.0
     _closeCallback = cb
 end
+
+function setLeftText(text)
+    _txtLeft.text = text or ""
+end
+
+function setRightText(text)
+    _txtRight.text = text or ""
+end
