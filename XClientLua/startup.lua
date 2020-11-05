@@ -1,7 +1,7 @@
 function initIncludePath()
     local platform = UE.Application.platform
     local path = ""
-    if platform == UE.RuntimePlatform.WindowEditor or platform == UE.RuntimePlatform.OSXEditor then
+    if platform == UE.RuntimePlatform.WindowsEditor or platform == UE.RuntimePlatform.OSXEditor then
         local dataPath = UE.Application.dataPath
         path = path .. dataPath .. "/../../XCommon/lua/?.lua"
     end
