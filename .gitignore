@@ -8,6 +8,10 @@
 /XClientUnity/obj
 /XClientUnity/Temp
 /XClientUnity/UnityPackageManager
+/XClientUnity/xgame
+/XClientUnity/Res_AB
+/XClientUnity/Assets/StreamingAssets
+/XClientUnity/Assets/StreamingAssets.meta
 /XClientUnity/Assets/XLua/Examples
 /XClientUnity/Assets/XLua/Resources
 /XClientUnity/Assets/XLua/Tutorial
@@ -36,3 +40,5 @@
 *.DS_Store
 *.code-workspace
 *.csproj
+*.log
+*.log.meta
