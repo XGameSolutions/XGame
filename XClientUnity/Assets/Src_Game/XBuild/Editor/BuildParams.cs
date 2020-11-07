@@ -1,17 +1,12 @@
-﻿using System.Text;
-using System.Text.RegularExpressions;
-/******************************************/
+﻿/******************************************/
 /*                                        */
 /*     Copyright (c) 2020 monitor1394     */
 /*     https://github.com/monitor1394     */
 /*                                        */
 /******************************************/
 
-using System.Collections;
-using System.Collections.Generic;
+using System.Text;
 using System.Text.RegularExpressions;
-using UnityEngine;
-using UnityEditor;
 
 namespace XBuild
 {
@@ -26,20 +21,24 @@ namespace XBuild
         public string applicationIdentifier;
         public int bundleVersionCode;
         public string appleDeveloperTeamID;
+        public string apkFileName;
+        public string companyName;
 
         public bool isDebug;
         public string startScene;
 
         public BuildParams()
         {
-            productName = "project-name";
-            applicationIdentifier = "com.company-name.project-name";
+            productName = BuildConfig.productName;
+            apkFileName = BuildConfig.apkFileName;
+            applicationIdentifier = BuildConfig.applicationIdentifier;
             apkVersion = "0.1.0";
             resVersion = "0.1.0";
             appleDeveloperTeamID = "teamId";
+            companyName = BuildConfig.companyName;
 
             isDebug = false;
-            startScene = "Assets/Scenes/SampleScene.unity";
+            startScene = BuildConfig.startScenePath;
         }
 
         public override string ToString()
@@ -52,6 +51,8 @@ namespace XBuild
             sb.AppendFormat("applicationIdentifier={0}\n", applicationIdentifier);
             sb.AppendFormat("bundleVersionCode={0}\n", applicationIdentifier);
             sb.AppendFormat("appleDeveloperTeamID={0}\n", appleDeveloperTeamID);
+            sb.AppendFormat("apkFileName={0}\n", apkFileName);
+            sb.AppendFormat("companyName={0}\n", companyName);
 
             sb.AppendFormat("isDebug={0}\n", isDebug);
             sb.AppendFormat("startScene={0}\n", startScene);
@@ -80,6 +81,8 @@ namespace XBuild
                 else if (key.Equals("bundleVersionCode")) param.bundleVersionCode = ParseInt(value);
                 else if (key.Equals("isDebug")) param.isDebug = ParseBool(value);
                 else if (key.Equals("appleDeveloperTeamID")) param.appleDeveloperTeamID = value;
+                else if (key.Equals("apkFileName")) param.apkFileName = value;
+                else if (key.Equals("companyName")) param.companyName = value;
             }
             return param;
         }

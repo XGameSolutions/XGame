@@ -1,5 +1,4 @@
-﻿using System.Net.Mime;
-/******************************************/
+﻿/******************************************/
 /*                                        */
 /*     Copyright (c) 2020 monitor1394     */
 /*     https://github.com/monitor1394     */
@@ -11,6 +10,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.SceneManagement;
+using UnityEditor.Build.Reporting;
+using System.IO;
 
 namespace XBuild
 {
@@ -20,35 +22,84 @@ namespace XBuild
 
         public static void BuildWindow()
         {
-            if (s_Param == null) s_Param = GetBuildParamsByCommandArgs(BuildTarget.StandaloneWindows);
+            var target = BuildTarget.StandaloneWindows;
+            if (s_Param == null) s_Param = BuildHelper.GetBuildParamsFromCommandLine(target);
             Debug.LogError(s_Param);
         }
 
         public static void BuildWindowAB()
         {
-            if (s_Param == null) s_Param = GetBuildParamsByCommandArgs(BuildTarget.StandaloneWindows);
-            BuildAB(BuildTarget.StandaloneWindows, s_Param);
+            var target = BuildTarget.StandaloneWindows;
+            if (s_Param == null) s_Param = BuildHelper.GetBuildParamsFromCommandLine(target);
+            BuildAB(target, s_Param);
         }
 
         public static void BuildOSXAB()
         {
-            if (s_Param == null) s_Param = GetBuildParamsByCommandArgs(BuildTarget.StandaloneWindows);
-            BuildAB(BuildTarget.StandaloneOSX, s_Param);
+            var target = BuildTarget.StandaloneOSX;
+            if (s_Param == null) s_Param = BuildHelper.GetBuildParamsFromCommandLine(target);
+            BuildAB(target, s_Param);
         }
 
-        private static void BuildAB(BuildTarget target, BuildParams param)
+        public static void BuildIOSXcode()
         {
-            var abDir = "Res_AB/" + target;
-            var abPath = Application.dataPath + "/../" + abDir;
+            var target = BuildTarget.iOS;
+            if (s_Param == null) s_Param = BuildHelper.GetBuildParamsFromCommandLine(target);
+            BuildAB(target, s_Param);
+            BuildPackage(target, s_Param);
+        }
+
+        public static void BuildIOSAB()
+        {
+            var target = BuildTarget.iOS;
+            if (s_Param == null) s_Param = BuildHelper.GetBuildParamsFromCommandLine(target);
+            BuildAB(target, s_Param);
+        }
+
+        public static void BuildAB(BuildTarget target, BuildParams param)
+        {
+            var abDir = BuildHelper.GetABDir(target);
+            var abPath = BuildHelper.GetABDirPath(target);
             var option = BuildAssetBundleOptions.None;
             option |= BuildAssetBundleOptions.ChunkBasedCompression;
             BuildHelper.CreateDir(abPath);
             BuildPipeline.BuildAssetBundles(abDir, option, target);
+            BuildLog.Log("BuildAB DONE!");
         }
 
-        private static void BuildPlayer(BuildTarget target, BuildParams param)
+        private static void BuildPackage(BuildTarget target, BuildParams param)
         {
+            EditorSceneManager.OpenScene(param.startScene);
+
+            var init = GameObject.Find(BuildConfig.startSceneInitObjectPath);
+            if (init != null)
+            {
+                //TODO: init params
+                //var startScript = init.gameObject.GetComponent<GameStart>();
+                //starScript.
+                EditorSceneManager.SaveOpenScenes();
+            }
+            var flag = BuildPlayer(target, param);
+            if (flag)
+            {
+                //TODO: save pkg to dir
+            }
+        }
+
+        private static bool BuildPlayer(BuildTarget target, BuildParams param)
+        {
+            var sourAbPath = BuildHelper.GetABDirPath(target);
+            var destAbPath = Application.streamingAssetsPath;
+            if (!Directory.Exists(sourAbPath))
+            {
+                BuildLog.LogError("ab path not exists:" + sourAbPath);
+                return false;
+            }
+            BuildHelper.ClearDir(destAbPath);
+            BuildHelper.CopyDir(sourAbPath, destAbPath);
+
             PlayerSettings.productName = param.productName;
+            PlayerSettings.companyName = param.companyName;
             PlayerSettings.applicationIdentifier = param.applicationIdentifier;
             PlayerSettings.bundleVersion = param.apkVersion;
             PlayerSettings.Android.bundleVersionCode = param.bundleVersionCode;
@@ -58,29 +109,23 @@ namespace XBuild
 
             BuildPlayerOptions op = new BuildPlayerOptions();
             op.scenes = new[] { param.startScene };
+            op.locationPathName = param.apkFileName;
             op.target = target;
-            op.options = param.isDebug ? (BuildOptions.Development | BuildOptions.AllowDebugging | BuildOptions.ConnectWithProfiler) :
+            op.options = param.isDebug ?
+                (BuildOptions.Development | BuildOptions.AllowDebugging | BuildOptions.ConnectWithProfiler) :
                 BuildOptions.None;
 
             var result = BuildPipeline.BuildPlayer(op);
             var summary = result.summary;
-
-        }
-
-        private static BuildParams GetBuildParamsByCommandArgs(BuildTarget target)
-        {
-            BuildParams param;
-            var args = Environment.GetCommandLineArgs();
-            if (Application.isBatchMode && args != null && args.Length >= 10)
+            if (summary.result == BuildResult.Succeeded)
             {
-                var strParams = args[9];
-                param = BuildParams.Parse(strParams);
+
             }
-            else
+            if (summary.result == BuildResult.Failed)
             {
-                param = new BuildParams();
+                return false;
             }
-            return param;
+            return true;
         }
     }
 }
