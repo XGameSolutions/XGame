@@ -1,6 +1,6 @@
 
 
-UNITY_PROJECT_NAME=UnityForProgrammer
+UNITY_PROJECT_NAME=UnityForCoder
 
 dir=$(cd $(dirname $0); pwd)
 dir_project=$dir/..

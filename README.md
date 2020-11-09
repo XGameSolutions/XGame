@@ -46,29 +46,57 @@ XGame由以下多个仓库组成。拆分成多仓库有许多好处，更多的
 
 ## 主要功能
 
-* `C++`和`Lua`交互方案 （已完成）
-* 基于`RecastNavigation`的导航网格寻路方案（已完成）
-* 基于`Libuv`的网络通信框架方案（已完成）
-* `RPC`通信协议方案（已完成）
-* `Lua`-`C++`定时器方案（已完成）
-* `Unity`调用`C++` `DLL`方案（已完成）
-* `SFM`影子跟随移动方案（待开发）
-* 状态同步方案（待开发）
-* `LuaBT`行为树`AI`方案（开发中）
-* 数据库存储和读写方案（待开发）
-* `Unity`下`XLua`编程方案（待开发）
-* 热更`C#`代码方案（待开发）
-* `AssetsBundle`打包方案（开发中）
-* 资源加载和管理方案（待开发）
-* 日志输出和收集方案（待开发）
+| 功能 | 完成情况 |
+| ----------------------------------- | -----|
+| `C++`和`Lua`交互方案                  | 已完成 |
+| 基于`RecastNavigation`的导航网格寻路方案| 已完成 |
+| 基于`Libuv`的网络通信框架方案           | 已完成 |
+| `RPC`通信协议方案                     | 已完成 |
+| `Lua`-`C++`定时器方案                 | 已完成 |
+| `Unity`调用`C++` `DLL`方案           | 已完成  |
+| `SFM`影子跟随移动方案                  | 待开发 |
+| 状态同步方案                          | 待开发 |
+| `LuaBT`行为树`AI`方案                 | 开发中 |
+| 数据库存储和读写方案                    | 待开发 |
+| `Unity`下`XLua`编程方案               | 待开发 |
+| 热更`C#`代码方案                      | 待开发 |
+| `AssetsBundle`打包方案                | 开发中 |
+| 资源加载和管理方案                     | 待开发 |
+| 日志输出和收集方案                     | 待开发 |
 
 ## 开发环境
 
 * MacOS 10.15.6
 * Unity2019.4.13f1
 
-## 使用
+## 使用教程
 
-1. 将本仓库`clone`或下载到本地，放到一个新目录，如`XGameSolutions`下
-2. 运行`XGame`里面的`xgame-clone-or-pull-programmer-程序.sh`脚本迁出工程
-3. 用`Unity`打开`XUnity`下的工程即可运行
+1. 将本仓库`clone`或下载到本地，放到一个新目录，如`XGameSolutions`下。
+2. 运行`XGame`里面的`project-for-coder-程序.sh`脚本`Clone`工程，如果工程已`Clone`则进行更新。
+3. 用`Unity`打开`XUnity`下的`UnityForCoder`工程即可运行。
+
+## 目录结构
+
+``` js
+.
+├── XGameSolutins
+.   ├── XClientLua
+    ├── XConfig
+    ├── XDriver
+    ├── XGame
+    ├── XPublicLua
+    ├── XServer
+    └── XUnity
+        ├── Assets
+        |   ├── Editor
+        |   ├── Plugins
+        |   ├── ResModel
+        |   ├── ResPublic
+        |   ├── ResScene
+        |   ├── ResUI
+        |   └── Src
+        ├── Packages
+        ├── ProjectSettings
+        └── ResAB
+
+```
