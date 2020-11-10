@@ -4,7 +4,7 @@ UNITY_PROJECT_NAME=UnityForQA
 
 dir=$(cd $(dirname $0); pwd)
 dir_project=$dir/..
-dir_unity=$dir/../XUnity
+dir_unity=$dir_project/XUnity
 dir_unity_project=$dir_unity/$UNITY_PROJECT_NAME
 
 sh sh/check_create_dir.sh $dir_unity

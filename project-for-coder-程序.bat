@@ -4,8 +4,8 @@
 set UNITY_PROJECT_NAME=UnityForCoder
 
 set dir=%~dp0
-set dir_project=%dir%/..
-set dir_unity=%dir%/../XUnity
+set dir_project=%dir%..
+set dir_unity=%dir_project%/XUnity
 set dir_unity_project=%dir_unity%/%UNITY_PROJECT_NAME%
 
 call bat/check_create_dir.bat %dir_unity%
@@ -27,3 +27,5 @@ call bat/clone_or_pull.bat https://github.com/monitor1394/XGame-XClient-AssetsRe
 call bat/clone_or_pull.bat https://github.com/monitor1394/XGame-XClient-AssetsResScene.git %dir_unity_project%/Assets/ResScene
 call bat/clone_or_pull.bat https://github.com/monitor1394/XGame-XClient-AssetsResUI.git %dir_unity_project%/Assets/ResUI
 call bat/clone_or_pull.bat https://github.com/monitor1394/XGame-XClient-AssetsSrc.git %dir_unity_project%/Assets/Src
+
+pause
