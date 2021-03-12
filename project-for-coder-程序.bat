@@ -23,6 +23,7 @@ call bat/clone_or_pull.bat https://github.com/monitor1394/XGame-XClient-ResAB.gi
 call bat/clone_or_pull.bat https://github.com/monitor1394/XGame-XClient-AssetsEditor.git %dir_unity_project%/Assets/Editor
 call bat/clone_or_pull.bat https://github.com/monitor1394/XGame-XClient-AssetsPlugins.git %dir_unity_project%/Assets/Plugins
 call bat/clone_or_pull.bat https://github.com/monitor1394/XGame-XClient-AssetsResPublic.git %dir_unity_project%/Assets/ResPublic
+call bat/clone_or_pull.bat https://github.com/monitor1394/XGame-XClient-AssetsResEffect.git %dir_unity_project%/Assets/ResEffect
 call bat/clone_or_pull.bat https://github.com/monitor1394/XGame-XClient-AssetsResModel.git %dir_unity_project%/Assets/ResModel
 call bat/clone_or_pull.bat https://github.com/monitor1394/XGame-XClient-AssetsResScene.git %dir_unity_project%/Assets/ResScene
 call bat/clone_or_pull.bat https://github.com/monitor1394/XGame-XClient-AssetsResUI.git %dir_unity_project%/Assets/ResUI

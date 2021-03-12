@@ -22,6 +22,7 @@ sh sh/clone_or_pull.sh https://github.com/monitor1394/XGame-XClient-ResAB.git ${
 sh sh/clone_or_pull.sh https://github.com/monitor1394/XGame-XClient-AssetsEditor.git ${dir_unity_project}/Assets/Editor
 sh sh/clone_or_pull.sh https://github.com/monitor1394/XGame-XClient-AssetsPlugins.git ${dir_unity_project}/Assets/Plugins
 sh sh/clone_or_pull.sh https://github.com/monitor1394/XGame-XClient-AssetsResPublic.git ${dir_unity_project}/Assets/ResPublic
+sh sh/clone_or_pull.sh https://github.com/monitor1394/XGame-XClient-AssetsResEffect.git ${dir_unity_project}/Assets/ResEffect
 sh sh/clone_or_pull.sh https://github.com/monitor1394/XGame-XClient-AssetsResModel.git ${dir_unity_project}/Assets/ResModel
 sh sh/clone_or_pull.sh https://github.com/monitor1394/XGame-XClient-AssetsResScene.git ${dir_unity_project}/Assets/ResScene
 sh sh/clone_or_pull.sh https://github.com/monitor1394/XGame-XClient-AssetsResUI.git ${dir_unity_project}/Assets/ResUI

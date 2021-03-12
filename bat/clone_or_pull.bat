@@ -1,7 +1,7 @@
 set git_path=%1
 set local_dir=%2
 
-echo " "
+echo.
 echo ---------------------------------------------------------------------
 echo [git]:%git_path%
 echo [dir]:%local_dir%
