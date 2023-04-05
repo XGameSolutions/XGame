@@ -18,7 +18,7 @@ repo_defs = {
     "Editors":              ("Assets/Editors",              repo_root_url + "/XGame-XClient-Editors.git"),
     "Plugins":              ("Assets/Plugins",              repo_root_url + "/XGame-XClient-Plugins.git"),
     "ResData":              ("Assets/ResData",              repo_root_url + "/XGame-XClient-ResData.git"),
-    "ResOther":             ("Assets/ResOther",             repo_root_url + "/XGame-XClient-ResOther.git"),
+    "ResPublic":             ("Assets/ResPublic",             repo_root_url + "/XGame-XClient-ResPublic.git"),
     "ResEffect":            ("Assets/ResEffect",            repo_root_url + "/XGame-XClient-ResEffect.git"),
     "ResModel":             ("Assets/ResModel",             repo_root_url + "/XGame-XClient-ResModel.git"),
     "ResShader":            ("Assets/ResShader",            repo_root_url + "/XGame-XClient-ResShader.git"),
@@ -30,7 +30,7 @@ repo_defs = {
 
 repo_basic = ("ProjectSettings", "Packages",
               "Editors", "Plugins", "Runtime")
-repo_all_res = ("ResOther", "ResEffect", "ResModel",
+repo_all_res = ("ResPublic", "ResEffect", "ResModel",
                 "ResShader", "ResScene", "ResSceneModel", "ResUI")
 repo_all_lua = ("XClientLua", "XConfig", "XCommon", "XServer")
 

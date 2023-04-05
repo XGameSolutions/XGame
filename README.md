@@ -1,8 +1,12 @@
 # XGame
 
-XGame旨在提供一套完整的游戏开发解决方案，包括前后端、底层驱动、配置数据等。采用`C++`、`C#`、`Lua`、`Python`等语言开发。
+XGame旨在提供一套完整的大型游戏开发解决方案，包括前后端、底层驱动、配置数据等。采用`C++`、`C#`、`Lua`、`Python`等语言开发。
 
 XGame模拟大项目团队管理流程，为了方便项目管理、多部门协作、权限划分、避免版本管理错乱等，将工程拆分成多个仓库。不同的开发角色可以迁出不同的仓库组合所需的最小工程，提高开发效率，减少冗余错误，降低维护成本。
+
+XGame对人数百人以上，资源量30G以上的团队具有一定的参考意义。小团队小游戏的话可以考虑更简洁的方案。
+
+本方案重点放在整体框架设计和资源管理上，有些功能只是简单实现，特别是底层驱动和服务器部分，没有具体参考意义。
 
 ## 方案组成
 
@@ -11,7 +15,7 @@ XGame模拟大项目团队管理流程，为了方便项目管理、多部门协
 | [XGame-XClientLua](https://github.com/monitor1394/XGame-XClientLua.git)                           | XGame游戏解决方案：客户端Lua代码 |
 | [XGame-XConfig](https://github.com/monitor1394/XGame-XConfig.git)                                 | XGame游戏解决方案：配置数据 |
 | [XGame-XCommon](https://github.com/monitor1394/XGame-XCommon.git)                                 | XGame游戏解决方案：前后端共用的Lua代码 |
-| [XGame-XDriver](https://github.com/monitor1394/XGame-XDriver.git)                                 | XGame游戏解决方案：底层C++驱动代码 |
+| [XGame-XDriver](https://github.com/monitor1394/XGame-XDriver.git)                                 | XGame游戏解决方案：底层C++驱动代码，前后端共用 |
 | [XGame-XServer](https://github.com/monitor1394/XGame-XServer.git)                                 | XGame游戏解决方案：服务端Lua代码 |
 | [XGame-XClient-Packages](https://github.com/monitor1394/XGame-XClient-Packages.git)               | XGame游戏解决方案：Unity客户端的Packages目录 |
 | [XGame-XClient-ProjectSettings](https://github.com/monitor1394/XGame-XClient-ProjectSettings.git) | XGame游戏解决方案：Unity客户端的ProjectSettings目录 |
@@ -19,7 +23,7 @@ XGame模拟大项目团队管理流程，为了方便项目管理、多部门协
 | [XGame-XClient-Editors](https://github.com/monitor1394/XGame-XClient-Editors.git)                 | XGame游戏解决方案：Unity客户端的Assets下的Editors目录，用于放工具类或不用打包的代码 |
 | [XGame-XClient-Plugins](https://github.com/monitor1394/XGame-XClient-Plugins.git)                 | XGame游戏解决方案：Unity客户端的Assets下的Plugins目录，用于放第三方插件代码 |
 | [XGame-XClient-ResData](https://github.com/monitor1394/XGame-XClient-ResData.git)                 | XGame游戏解决方案：Unity客户端的Assets下的ResData目录，用于放程序和策划资源数据 |
-| [XGame-XClient-ResOther](https://github.com/monitor1394/XGame-XClient-ResOther.git)               | XGame游戏解决方案：Unity客户端的Assets下的ResOther目录，其他资源 |
+| [XGame-XClient-ResPublic](https://github.com/monitor1394/XGame-XClient-ResPublic.git)             | XGame游戏解决方案：Unity客户端的Assets下的ResPublic目录，公共资源 |
 | [XGame-XClient-ResEffect](https://github.com/monitor1394/XGame-XClient-ResEffect.git)             | XGame游戏解决方案：Unity客户端的Assets下的ResEffect目录，特效资源 |
 | [XGame-XClient-ResModel](https://github.com/monitor1394/XGame-XClient-ResModel.git)               | XGame游戏解决方案：Unity客户端的Assets下的ResModel目录，角色模型资源 |
 | [XGame-XClient-ResScene](https://github.com/monitor1394/XGame-XClient-ResScene.git)               | XGame游戏解决方案：Unity客户端的Assets下的ResScene目录，场景资源 |
@@ -29,26 +33,37 @@ XGame模拟大项目团队管理流程，为了方便项目管理、多部门协
 
 ## 迁出参考
 
-|             仓库               | 程序 | 程序2 | 策划 | 测试 | 美术 | 场景 | 模型 | 特效 | UI |
-| ----------------------------- | - | - | - | - | - | - | - | - | - |
-| XGame-XClientLua              | √ | √ |
-| XGame-XConfig                 | √ | √ | √ |
-| XGame-XCommon                 | √ | √ |
-| XGame-XDriver                 | √ |   |
-| XGame-XServer                 | √ | √ |
-| XGame-XClient-Packages        | √ | √ | √ | √ | √ | √ | √ | √ | √ |
-| XGame-XClient-ProjectSettings | √ | √ | √ | √ | √ | √ | √ | √ | √ |
-| XGame-XClient-ResAB           | √ | √ | √ | √ | √ | √ | √ | √ | √ |
-| XGame-XClient-Editors         | √ | √ | √ | √ | √ | √ | √ | √ | √ |
-| XGame-XClient-Plugins         | √ | √ | √ | √ | √ | √ | √ | √ | √ |
-| XGame-XClient-ResData         | √ | √ | √ | √ | √ | √ | √ | √ | √ |
-| XGame-XClient-ResEffect       | √ |   |   |   | √ |   |   | √ |   |
-| XGame-XClient-ResModel        | √ |   |   |   | √ |   | √ |   |   |
-| XGame-XClient-ResScene        | √ |   | √ |   | √ | √ |   |   |   |
-| XGame-XClient-ResSceneModel   | √ |   | √ |   | √ | √ |   |   |   |
-| XGame-XClient-ResUI           | √ | √ | √ |   | √ |   |   |   | √ |
-| XGame-XClient-ResOther        | √ | √ | √ | √ | √ | √ | √ | √ | √ |
-| XGame-XClient-Runtime         | √ | √ | √ | √ | √ | √ | √ | √ | √ |
+√√ 表示需要迁出仓库，可以提交仓库
+√x 表示需要迁出仓库，不能提交仓库
+
+|             仓库               | 打包 | 程序1 | 程序2 | 策划 | QA1 | QA2 | 美术 | 角色 | 场编 | 场模 | 特效 | UI |
+| ----------------------------- | -  | -  | -  | -  | -  | -  | -  | -  | -  | -  | -  | -  |
+| XGame-XClientLua              | √√ | √√ | √√ | √x | √x |
+| XGame-XConfig                 | √√ | √x | √x | √√ | √x |
+| XGame-XCommon                 | √√ | √√ | √√ | √x | √x |
+| XGame-XDriver                 |    | √√ |
+| XGame-XServer                 |    | √√ | √√ | √x | √x |
+| XGame-XClient-Packages        | √√ | √√ | √√ | √x | √x | √x | √x | √x | √x | √x | √x | √x |
+| XGame-XClient-ProjectSettings | √√ | √√ | √√ | √x | √x | √x | √x | √x | √x | √x | √x | √x |
+| XGame-XClient-ResAB           | √√ | √x | √x | √x | √x | √x | √x | √x | √x | √x | √x | √x |
+| XGame-XClient-Editors         |    | √√ | √√ | √x | √x | √x | √x | √x | √x | √x | √x | √x |
+| XGame-XClient-Plugins         | √√ | √√ | √√ | √x | √x | √x | √x | √x | √x | √x | √x | √x |
+| XGame-XClient-Runtime         | √√ | √√ | √√ | √x | √x | √x | √x | √x | √x | √x | √x | √x |
+| XGame-XClient-ResData         | √√ | √√ |    | √√ | √x |    | √x | √x | √x | √x | √x | √x |
+| XGame-XClient-ResEffect       | √√ | √√ |    | √√ | √x |    | √√ |    |    |    | √√ |    |
+| XGame-XClient-ResModel        | √√ | √√ |    | √√ | √x |    | √√ | √√ |    |    |    |    |
+| XGame-XClient-ResScene        | √√ | √√ |    | √√ | √x |    | √√ |    | √√ | √x |    |    |
+| XGame-XClient-ResSceneModel   | √√ | √√ |    | √√ | √x |    | √√ |    | √x | √√ |    |    |
+| XGame-XClient-ResUI           | √√ | √√ | √√ | √x | √x |    | √√ |    |    |    |    | √√ |
+| XGame-XClient-ResPublic       | √√ | √√ | √√ | √√ | √x |    | √√ | √√ | √√ | √√ | √√ | √√ |
+
+## 参考方案
+
+* [打包方案](#打包方案)
+* 首包分包方案
+* 多语言包方案
+* 多工程多版本的资源同步方案
+* 自动化首包资源抽取方案
 
 ## 主要功能
 
@@ -70,19 +85,15 @@ XGame模拟大项目团队管理流程，为了方便项目管理、多部门协
 | `SFM`影子跟随移动                     | 待开发 |
 | 战斗同步                             | 待开发 |
 
-## 参考方案
-
-* [打包方案](#打包方案)
-
 ## 开发环境
 
 * MacOS 10.15.6
-* Unity2019.4.13f1
+* Unity2019.4.39f1
 
 ## 使用教程
 
 1. 将本仓库`clone`或下载到本地，放到一个新目录，如`XGameSolutions`下。
-2. 运行`XGame`里面的`project-for-coder-程序.bat`或`project-for-coder-程序.sh`脚本`Clone`工程，如果工程已`Clone`则进行更新。
+2. 运行`XGame`里面的`project_pull_clone_developer.bat`或`project_pull_clone_developer.sh`脚本`Clone`工程，如果工程已`Clone`则进行更新。
 3. 用`Unity`打开`XUnity`下的`UnityForCoder`工程即可运行。
 
 ## 目录结构
@@ -106,7 +117,7 @@ XGame模拟大项目团队管理流程，为了方便项目管理、多部门协
         |   |   ├── ResScene
         |   |   ├── ResSceneModel
         |   |   ├── ResUI
-        |   |   ├── ResOther
+        |   |   ├── ResPublic
         |   |   └── Runtime
         |   ├── Packages
         |   ├── ProjectSettings
